@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Developer Portfolio</title>
+    <link rel="stylesheet" href="style.css"/>
+        <script>
+            function toggleDetails(header) {
+                const body = header.nextElementSibling;
+                const button = header.querySelector(".toggle-btn");
+                const isHidden = body.classList.contains("hidden");
+
+                // toggle visibility
+                body.classList.toggle("hidden");
+
+                // change icon
+                button.textContent = isHidden ? "▼" : "▶";
+            }
+        </script>
+    <script>
+        // 동적으로 프로젝트 HTML 삽입
+        fetch("projects/oship.html")
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById("project-container").innerHTML += html;
+            });
+    </script>
+</head>
+<body>
+<header class="header">
+    <div class="container intro">
+        <div class="text">
+            <h2>탄탄한 뿌리를 가진 개발자 <span class="highlight">김국민 입니다</span> 👋</h2>
+            <p>
+                성실함과 끈기를 바탕으로 끊임없이 성장하는 개발자입니다.<br>
+                특히, 코드를 작성하는 것보다 개발 이전 단계인 분석과 설계를 더 중요하게 생각하여,
+                안정적인 시스템 구현과 도메인에 대한 깊은 이해를 가장 중요하게 여기며 개발에 임하고 있습니다.<br>
+                프로젝트마다 위키 문서를 작성하여 지식을 적극적으로 공유해왔고,<br>
+                매주 한 번 자율적인 주제로 개념과 실습 중심의 스터디를 통해 개발에 대한 흥미와 역량을 꾸준히 키워가고 있습니다.<br>
+                또한, 정량적인 지표를 기반으로 이유 있는 기술 선택을 하는 것을 중요하게 생각하며,<br>
+                실무에서 효율적이고 신뢰성 높은 시스템을 만들기 위해 노력하고 있습니다.
+            </p>
+        </div>
+
+        <div class="contact" style="line-height: 2;">
+            <p>
+                <img src="icons/phone.svg" alt="Java"/>
+                <strong>Phone:</strong> 010-3398-8303
+            </p>
+
+            <p>
+                <img src="icons/email.svg" alt="Java"/>
+                <strong>Email:</strong> <a href="mailto:mxcoogi@gmail.com">mxcoogi@gmail.com</a>
+            </p>
+
+            <p>
+                <img src="icons/github_profile.svg" alt="Java"/>
+                <strong>GitHub:</strong> <a href="https://github.com/mxcoogi" target="_blank">github.com/mxcoogi</a>
+            </p>
+
+            <p>
+                <img src="icons/blog.svg" alt="Java"/>
+                <strong>Blog:</strong> <a href="https://velog.io/@mxcoogi/posts"
+                                          target="_blank">velog.io/@mxcoogi/posts</a>
+            </p>
+        </div>
+
+        <div class="profile">
+            <img src="image/profile.jpeg" alt="Profile Photo"/>
+        </div>
+    </div>
+</header>
+
+<section class="skills">
+    <h2>🛠️ Skills</h2>
+    <div class="skill-icons">
+        <img src="icons/Java.svg" alt="Java"/>
+        <img src="icons/Spring.svg" alt="Spring Boot"/>
+        <img src="icons/MySQL.svg" alt="MySQL"/>
+        <img src="icons/Redis.svg" alt="Redis"/>
+        <img src="icons/docker.svg" alt="Docker"/>
+        <img src="icons/AWS.svg" alt="AWS"/>
+        <img src="icons/Git.svg" alt="AWS"/>
+        <img src="icons/GitHub.svg" alt="AWS"/>
+    </div>
+</section>
+
+<section class="projects">
+    <h2>🚀 Project</h2>
+    <div class="project-list" id="project-container">
+
+    </div>
+</section>
+<section class="studies">
+    <h2>🚀 Study</h2>
+    <div class="study-list">
+
+        <!-- 스터디 1 -->
+        <div class="study-card">
+            <div class="card-header" onclick="toggleDetails(this)">
+                <h3>커넥션 풀 최적화와 성능 튜닝</h3>
+                <button class="toggle-btn">▶</button>
+            </div>
+            <div class="card-body hidden">
+                <h4>📝 스터디 내용</h4>
+                <p>데이터베이스 커넥션 풀(Connection Pool)의 개념과 필요성을 이해하고, HikariCP를 사용한 커넥션 풀 설정 튜닝 방법을 학습했습니다. 커넥션 생성 비용과 커넥션 풀의
+                    자원 효율성을 중심으로, 스레드 풀과의 관계를 분석했습니다.</p>
+
+                <h4>💡 배경 및 문제 인식</h4>
+                <p>DB 연결 과정은 드라이버 로드, TCP 핸드쉐이크, 커넥션 생성 등으로 비용이 크며, MySQL 기준 INSERT 시에도 연결 관련 오버헤드가 상당합니다. 무작정 커넥션 수를
+                    늘리는 것이 성능 개선의 답이 아니라는 점을 확인했습니다.</p>
+
+                <h4>🔍 커넥션 풀 개념 및 장점</h4>
+                <ul>
+                    <li>DB 커넥션을 미리 만들어 재사용하는 기술로, 매번 새로 만들지 않고 풀에서 꺼내 씀으로써 성능 향상</li>
+                    <li>서버 부하 감소 및 자원 효율성 증대</li>
+                    <li>하지만 커넥션 풀 크기만 키운다고 해서 성능이 좋아지지 않으며, 스레드 수와 균형을 맞춰야 함</li>
+                </ul>
+
+                <h4>🛠 실험: 병렬 요청 30,000건 처리 테스트</h4>
+                <table style="width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.85rem; text-align: center;">
+                    <thead>
+                    <tr style="background-color:#0366d6; color:white;">
+                        <th style="padding: 6px 8px; border: 1px solid #2c5282;">최대 풀 크기</th>
+                        <th style="padding: 6px 8px; border: 1px solid #2c5282;">대기 커넥션</th>
+                        <th style="padding: 6px 8px; border: 1px solid #2c5282;">스레드 수</th>
+                        <th style="padding: 6px 8px; border: 1px solid #2c5282;">소요 시간 (ms)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">5</td>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">5</td>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">-</td>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">9851</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">5</td>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">5</td>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">0</td>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">9949</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">10</td>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">10</td>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">-</td>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">9797</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">10</td>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">10</td>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">10</td>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">7712</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">20</td>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">10</td>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">10</td>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">7812</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">20</td>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">20</td>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">10</td>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">7870</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">20</td>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">20</td>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">20</td>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">6577</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">20</td>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">10</td>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">20</td>
+                        <td style="padding: 4px 8px; border: 1px solid #cbd5e0; vertical-align: middle;">6432</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h4>📈 해석 및 결론</h4>
+                <ul>
+                    <li>최대 풀 크기 10~20 이상부터 성능 향상이 뚜렷하게 나타남</li>
+                    <li>대기 커넥션 수는 최대 풀 크기보다 적당히 유지하는 것이 효율적</li>
+                    <li>스레드 풀을 반드시 설정하고, 스레드 수에 따라 성능 차이가 크게 발생</li>
+                </ul>
+
+                <p>따라서 커넥션 풀과 스레드 풀의 적절한 조합을 통해 대량 병렬 처리 시 처리 시간을 크게 줄이고, 자원 낭비를 막는 것이 핵심임을 확인했습니다.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+body {
+    margin: 0;
+    padding-left: 10%;
+    padding-right: 10%;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9f9f9;
+    color: #24292e;
+    line-height: 1.6;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+}
+
+.header {
+    border-bottom: 1px solid #30363d;
+}
+
+.intro .text {
+    max-width: 600px;
+}
+
+.intro h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.highlight {
+    color: #58a6ff;
+}
+
+.profile img {
+    width: 150px;
+    height: 200px;
+    border-radius: 12px;
+    border: 2px solid #30363d;
+}
+
+.skills, .projects, .studies {
+    padding: 2rem;
+}
+
+.skills h2, .projects h2, .studies h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    /* 동일한 색상으로 통일하려면 아래 주석 해제 가능 */
+    /* color: #24292e; */
+}
+
+.skill-icons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.skill-icons img {
+    width: 50px;
+    height: 50px;
+    filter: brightness(1.2);
+}
+
+.project-list, .study-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* 프로젝트 카드와 동일한 스타일 */
+.project-card,
+.study-card {
+    background-color: #f2f4f8;  /* 프로젝트 카드 배경색과 동일 */
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid #30363d; /* 프로젝트 카드 테두리와 동일 */
+    /* 그림자도 동일하게 */
+    box-shadow: none;  /* 프로젝트 카드에 그림자 없으면 제거 */
+}
+
+.project-card h3,
+.study-card h3 {
+    margin-top: 0;
+    color: #24292e; /* 프로젝트 카드 제목 색상과 동일 */
+}
+
+.project-card .tag,
+.study-card .tag {
+    display: inline-block;
+    background-color: #a8c5e7;
+    color: #000000;
+    padding: 0.2rem 0.6rem;
+    margin-right: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.toggle-btn {
+    font-size: 1.2rem;
+    background: none;
+    border: none;
+    color: #58a6ff;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.card-body {
+    margin-top: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.hidden {
+    display: none;
+}
